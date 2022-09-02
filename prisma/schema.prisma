@@ -12,6 +12,12 @@ enum Role {
     admin
 }
 
+enum Status {
+    unwatched
+    watching
+    watched
+}
+
 model Users {
     id         String   @id @default(auto()) @map("_id") @db.ObjectId
     role       Role     @default(user)
@@ -25,13 +31,14 @@ model Users {
 
 model Movies {
     id           String @id @default(auto()) @map("_id") @db.ObjectId
+    status       Status @default(unwatched)
     title        String
     description  String
     genre        String
     duration     String
     release_year String
     box_office   String
-    cast         String
+    cast         String[]
     studio       String
     available_on String
     user         Users  @relation(fields: [userId], references: [id])
