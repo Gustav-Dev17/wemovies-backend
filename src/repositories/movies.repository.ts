@@ -6,7 +6,7 @@ export const CreateMoviesRepo = (body: IMovie) => {
   return prisma.movies.create({ data: body });
 };
 
-export const ReadMovieById = (id: string) => {
+export const ReadMovieByID = (id: string) => {
   try {
     return prisma.movies.findUnique({ where: { id } });
   } catch (e) {
