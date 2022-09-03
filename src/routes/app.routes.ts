@@ -11,7 +11,7 @@ route.get("/users", ReadAllUsers);
 route.patch("/user/:id", UpdateUser);
 route.delete("/user/:id", DeleteUser);
 
-//job routes
+//movie routes
 route.post("/movie", CreateMovie);
 route.get("/movie/:id", ReadMovie);
 route.get("/movies", ReadMovies); //query example to paginate: ?page=2
