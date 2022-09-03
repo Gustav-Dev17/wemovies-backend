@@ -15,19 +15,27 @@ export const ReadMovieByID = (id: string) => {
 };
 
 export const ReadMovies = (pageNumber: number) => {
-  return prisma.movies.findMany({
-    take: PgConfig.perPage,
-    skip: PgConfig.perPage * pageNumber,
-  });
+  if (pageNumber) {
+    return prisma.movies.findMany({
+      take: PgConfig.perPage,
+      skip: PgConfig.perPage * pageNumber,
+    });
+  } else {
+    return prisma.movies.findMany();
+  }
 };
 
 export const ReadMoviesByUser = (userId: string, pageNumber: number) => {
-  return prisma.movies.findMany({
-    take: PgConfig.perPage,
-    skip: PgConfig.perPage * pageNumber,
-    where: { userId },
-    orderBy: { title: "asc" },
-  });
+  if (pageNumber) {
+    return prisma.movies.findMany({
+      take: PgConfig.perPage,
+      skip: PgConfig.perPage * pageNumber,
+      where: { userId },
+      orderBy: { title: "asc" },
+    });
+  } else {
+    return prisma.movies.findMany();
+  }
 };
 
 export const UpdateMovie = (body: IRequestMovieBody, id: string) => {

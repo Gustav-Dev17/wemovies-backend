@@ -1,4 +1,3 @@
-
 import { IRequestMovieBody, IMovie } from "types/movie.body.types";
 import { CreateMoviesRepo, ReadMovies, ReadMovieByID, ReadMoviesByUser, UpdateMovie, DeleteMovie } from "repositories/movies.repository";
 
@@ -37,7 +36,9 @@ export const ListMoviesByUserService = (id: string, pageNumber: number) => {
 export const UpdateMovieService = async (body: IRequestMovieBody, id: string) => {
   try {
     const movie = await ReadMovieByID(id);
+    const status = body.status || movie?.status;
     const title = body.title || movie?.title;
+    const origin = body.origin || movie?.origin;
     const description = body.description || movie?.description;
     const genre = body.genre || movie?.genre;
     const duration = body.duration || movie?.duration;
@@ -46,7 +47,7 @@ export const UpdateMovieService = async (body: IRequestMovieBody, id: string) =>
     const cast = body.cast || movie?.cast;
     const studio = body.studio || movie?.studio;
     const available_on = body.available_on || movie?.available_on;
-    return UpdateMovie({ title, description, genre, duration, release_year, box_office, cast, studio, available_on }, id);
+    return UpdateMovie({ status, title, origin, description, genre, duration, release_year, box_office, cast, studio, available_on }, id);
   } catch (e) {
     throw new Error((e as Error).message);
   }
