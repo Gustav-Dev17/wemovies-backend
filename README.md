@@ -37,7 +37,13 @@ npm install
 npx prisma generate
 ```
 
-2.  to run this API, run one of the following commands below:
+2.  sync the database with the prisma schema with:
+
+```
+npx prisma db push
+```
+
+3.  to run this API, run one of the following commands below:
 
 ```
 yarn dev
