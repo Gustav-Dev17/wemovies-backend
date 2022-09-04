@@ -258,7 +258,7 @@ npm run dev
 
 <li><a href="https://www.prisma.io/">Prisma ORM</a> – ORM that makes working with databases easy for application developers and features</li>
 
-<li><a href="https://www.prisma.io/">MongoDB</a> – Open source NoSQL database management program</li>
+<li><a href="https://www.mongodb.com/">MongoDB</a> – Open source NoSQL database management program</li>
 
 <li>And more...</li>
 </ul>
