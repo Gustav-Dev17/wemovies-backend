@@ -18,7 +18,8 @@ export const CreateUser = async (req: Request, res: Response) => {
 
 export const ReadUser = async (req: Request, res: Response) => {
   try {
-    const user = await ListUserService(req.params.id);
+    const { id } = req;
+    const user = await ListUserService(id);
     return res.status(200).json(user);
   } catch (e) {
     return res.status(400).json({ message: "Error when listing user!", descripton: (e as Error).message });
@@ -36,7 +37,8 @@ export const ReadAllUsers = async (__: Request, res: Response) => {
 
 export const UpdateUser = async (req: Request, res: Response) => {
   try {
-    const user = await UpdateUserService(req.body, req.params.id);
+    const { id } = req;
+    const user = await UpdateUserService(req.body, id);
     return res.status(200).json(user);
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
@@ -56,7 +58,8 @@ export const UpdateUser = async (req: Request, res: Response) => {
 
 export const DeleteUser = async (req: Request, res: Response) => {
   try {
-    const user = await DeleteUserService(req.params.id);
+    const { id } = req;
+    const user = await DeleteUserService(id);
     return res.status(204).json(user);
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError) {

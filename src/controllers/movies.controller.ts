@@ -11,6 +11,8 @@ import {
 
 export const CreateMovie = async (req: Request, res: Response) => {
   try {
+    const { id } = req;
+    req.body.userId = id;
     const newMovie = await CreateMovieService(req.body);
     return res.status(201).json(newMovie);
   } catch (e) {
@@ -39,11 +41,13 @@ export const ReadMovies = async (req: Request, res: Response) => {
 
 export const ReadMoviesByUser = async (req: Request, res: Response) => {
   try {
+    const { id } = req;
+    req.body.userId = id;
     const pageNumber: number = parseInt(req.query.page as string);
-    const movies = await ListMoviesByUserService(req.params.id, pageNumber);
+    const movies = await ListMoviesByUserService(id, pageNumber);
     return res.status(200).json(movies);
   } catch (e) {
-    return res.status(400).json({ message: "Error when listing employer's movies!", descripton: (e as Error).message });
+    return res.status(400).json({ message: "Error when listing user's movies!", descripton: (e as Error).message });
   }
 };
 

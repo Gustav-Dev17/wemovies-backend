@@ -42,6 +42,6 @@ model Movies {
     cast         String[]
     studio       String[]
     available_on String[]
-    user         Users    @relation(fields: [userId], references: [id])
+    user         Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId       String   @db.ObjectId
 }
