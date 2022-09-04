@@ -35,19 +35,28 @@ npm install
 
 ## 🚀 Running this API locally
 
-1.  generate prisma schema with:
+1. Duplicate the file <code>.env.example</code> and rename one of them to <code>.env</code>
+
+2. Add the environment variables in the newly created <code>.env</code> file
+
+```
+DATABASE_URL =
+SECRET = 
+```
+
+3. Generate prisma schema with:
 
 ```
 npx prisma generate
 ```
 
-2.  sync the database with the prisma schema with:
+4. Sync the database with the prisma schema with:
 
 ```
 npx prisma db push
 ```
 
-3.  to run this API, run one of the following commands below:
+5. To run this API, run one of the following commands below:
 
 ```
 yarn dev
