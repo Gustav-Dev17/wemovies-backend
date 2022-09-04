@@ -78,7 +78,7 @@ npm run dev
     "password": "1234"
 }
 ```
-
+ℹ The application gets the user's id since the login, dispensing the need to add the user's id in the application's routes.
 ### 2. User routes
 2.1 Create user: <code>POST</code>  /user
 ```
@@ -135,7 +135,7 @@ npm run dev
 ```
 2.5 Delete user: <code>DELETE</code>  /user
 </br><i>Return:</i> 204 No Content
-</br>⚠️ <i>Note that this also deletes on cascade all movies the deleted user has added</i>
+</br>⚠️ Note that this also deletes on cascade all movies the deleted user has added
 
 ### 3. Movie routes
 3.1 Create movie: <code>POST</code>  /movie
