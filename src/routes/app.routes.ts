@@ -1,20 +1,22 @@
 import express from "express";
-import { loginSchema } from "models/auth.model";
+import { userSchema } from "schemas/user.schema";
+import { loginSchema } from "schemas/auth.schema";
+import { movieSchema } from "./../schemas/movie.schema";
 import { DoLogin } from "controllers/auth.controller";
-import { validateAuthPayload } from "auth/auth.validator";
+import { validate } from "src/validators/fields.validator";
 import { AuthMiddleware } from "middlewares/auth.middleware";
 import { CreateUser, DeleteUser, ReadUser, ReadAllUsers, UpdateUser } from "controllers/users.controller";
 import { CreateMovie, ReadMovie, ReadMovies, ReadMoviesByUser, UpdateMovie, DeleteMovie } from "controllers/movies.controller";
 
 const route = express.Router();
 
-route.post("/login", validateAuthPayload(loginSchema), DoLogin);
+route.post("/login", validate(loginSchema), DoLogin);
 
 //user routes
-route.post("/user", CreateUser);
+route.post("/user", validate(userSchema), CreateUser);
 route.get("/user", AuthMiddleware, ReadUser);
 route.get("/users", AuthMiddleware, ReadAllUsers);
-route.patch("/user", AuthMiddleware, UpdateUser);
+route.patch("/user", validate(userSchema), AuthMiddleware, UpdateUser);
 route.delete("/user", AuthMiddleware, DeleteUser);
 
 //movie routes

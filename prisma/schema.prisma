@@ -8,19 +8,19 @@ generator client {
 }
 
 enum Role {
-    user
-    admin
+    User
+    Admin
 }
 
 enum Status {
-    unwatched
-    watching
-    watched
+    Unwatched
+    Watching
+    Watched
 }
 
 model Users {
     id         String   @id @default(auto()) @map("_id") @db.ObjectId
-    role       Role     @default(user)
+    role       Role     @default(User)
     name       String
     email      String   @unique
     password   String
@@ -31,7 +31,7 @@ model Users {
 
 model Movies {
     id           String   @id @default(auto()) @map("_id") @db.ObjectId
-    status       Status   @default(unwatched)
+    status       Status   @default(Watched)
     title        String
     origin       String[]
     description  String
@@ -42,6 +42,7 @@ model Movies {
     cast         String[]
     studio       String[]
     available_on String[]
+    watched_on   DateTime
     user         Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId       String   @db.ObjectId
 }

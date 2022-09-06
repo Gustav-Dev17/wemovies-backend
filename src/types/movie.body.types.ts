@@ -1,4 +1,4 @@
-export type Status = "unwatched" | "watching" | "watched";
+export type Status = "Unwatched" | "Watching" | "Watched";
 
 export interface IRequestMovieBody {
   status?: Status;
@@ -12,6 +12,7 @@ export interface IRequestMovieBody {
   cast?: string[];
   studio?: string[];
   available_on?: string[];
+  watched_on: Date;
   userId?: string;
 }
 
@@ -27,5 +28,6 @@ export interface IMovie {
   cast: string[];
   studio: string[];
   available_on: string[];
+  watched_on: Date;
   userId: string;
 }

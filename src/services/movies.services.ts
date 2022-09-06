@@ -47,7 +47,8 @@ export const UpdateMovieService = async (body: IRequestMovieBody, id: string) =>
     const cast = body.cast || movie?.cast;
     const studio = body.studio || movie?.studio;
     const available_on = body.available_on || movie?.available_on;
-    return UpdateMovie({ status, title, origin, description, genre, duration, release_year, box_office, cast, studio, available_on }, id);
+    const watched_on = body.watched_on || movie?.watched_on;
+    return UpdateMovie({ status, title, origin, description, genre, duration, release_year, box_office, cast, studio, available_on, watched_on }, id);
   } catch (e) {
     throw new Error((e as Error).message);
   }

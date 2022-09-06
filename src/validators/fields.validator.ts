@@ -1,9 +1,10 @@
 import { SchemaOf } from "yup";
 import { IUser } from "types/user.body.types";
+import { IMovie } from "types/movie.body.types";
 import { ILogin } from "types/login.body.types";
 import { NextFunction, Request, Response } from "express";
 
-export const validateAuthPayload = (schema: SchemaOf<IUser | ILogin>) => {
+export const validate = (schema: SchemaOf<ILogin | IUser | IMovie>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data = req.body;
