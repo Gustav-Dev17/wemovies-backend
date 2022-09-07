@@ -3,7 +3,7 @@ import * as yup from "yup";
 const today = new Date();
 
 export const movieSchema = yup.object().shape({
-  status: yup.mixed().oneOf(["Unwatched", "Watching", "Watched"]).notRequired(),
+  status: yup.mixed().oneOf(["Unwatched", "Watching", "Watched"]).required("Movie status is required!"),
   title: yup.string().min(1, "Title must be at least 1 character long").required("Movie title is required!"),
   origin: yup.array().of(yup.string()).notRequired(),
   description: yup.string().max(300, "Description cannot be longer than 300 characters").required("Movie description is required!"),
