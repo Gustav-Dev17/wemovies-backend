@@ -30,19 +30,19 @@ model Users {
 }
 
 model Movies {
-    id           String   @id @default(auto()) @map("_id") @db.ObjectId
-    status       Status   @default(Watched)
+    id           String    @id @default(auto()) @map("_id") @db.ObjectId
+    status       Status    @default(Watched)
     title        String
     origin       String[]
     description  String
     genre        String[]
-    duration     String
-    release_year String
-    box_office   String
+    duration     String?
+    release_year String?
+    box_office   String?
     cast         String[]
     studio       String[]
     available_on String[]
-    watched_on   DateTime
-    user         Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId       String   @db.ObjectId
+    watched_on   DateTime?
+    user         Users     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId       String    @db.ObjectId
 }

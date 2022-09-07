@@ -1,13 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { Request, Response } from "express";
-import {
-  CreateMovieService,
-  ListMovieService,
-  ListMoviesService,
-  ListMoviesByUserService,
-  UpdateMovieService,
-  DeleteMovieService,
-} from "services/movies.services";
+import { CreateMovieService, ListMovieService, ListMoviesService, ListMoviesByUserService, UpdateMovieService, DeleteMovieService } from "services/movies.services";
 
 export const CreateMovie = async (req: Request, res: Response) => {
   try {
@@ -43,8 +36,8 @@ export const ReadMoviesByUser = async (req: Request, res: Response) => {
   try {
     const { id } = req;
     req.body.userId = id;
-    const pageNumber: number = parseInt(req.query.page as string);
-    const movies = await ListMoviesByUserService(id, pageNumber);
+    const pageNumber = req.query.page;
+    const movies = await ListMoviesByUserService(id, parseInt(pageNumber as string));
     return res.status(200).json(movies);
   } catch (e) {
     return res.status(400).json({ message: "Error when listing user's movies!", descripton: (e as Error).message });
