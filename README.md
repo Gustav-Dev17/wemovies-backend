@@ -1,6 +1,6 @@
 <p align="center"><a href="https://nodejs.org/en/" target="_blank"><img src="https://nodejs.org/static/images/logo.svg" width="270"></a></p>
 
-# 🎬 Movies API
+# 🎬 WeMovies API
 
 Back-end application developed with NodeJs, for integration with MongoDB database.
 
@@ -9,13 +9,13 @@ Back-end application developed with NodeJs, for integration with MongoDB databas
 1. To clone this project with command line you must have <a href="https://git-scm.com/downloads">Git</a> installed on your machine. On your terminal run:
 
 ```
-git clone https://github.com/Gustav-Dev17/movies-backend.git
+git clone https://github.com/Gustav-Dev17/wemovies-backend.git
 ```
 
 2. Access the root folder:
 
 ```
-cd movies-backend
+cd wemovies-backend
 ```
 
 ## 💿 Installing dependencies
