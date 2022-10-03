@@ -30,15 +30,15 @@
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
+      "config/*": ["./src/config/*"],
       "controllers/*": ["./src/controllers/*"],
-      "services/*": ["./src/services/*"],
-      "routes/*": ["./src/routes/*"],
-      "repositories/*": ["./src/repositories/*"],
-      "types/*": ["./src/types/*"],
-      "models/*": ["./src/models/*"],
       "middlewares/*": ["./src/middlewares/*"],
-      "auth/*": ["./src/auth/*"],
-      "config/*": ["./src/config/*"]
+      "repositories/*": ["./src/repositories/*"],
+      "routes/*": ["./src/routes/*"],
+      "schemas/*": ["./src/schemas/*"],
+      "services/*": ["./src/services/*"],
+      "types/*": ["./src/types/*"],
+      "validators/*": ["./src/validators/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */

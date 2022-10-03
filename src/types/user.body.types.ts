@@ -1,4 +1,4 @@
-export type Role = "user" | "admin";
+export type Role = "Admin" | "User";
 
 export interface IRequestUserBody {
   role?: Role;
@@ -8,7 +8,7 @@ export interface IRequestUserBody {
 }
 
 export interface IUser {
-  role: Role;
+  role?: Role;
   name: string;
   email: string;
   password: string;

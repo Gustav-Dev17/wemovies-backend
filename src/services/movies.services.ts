@@ -1,8 +1,12 @@
 import { IRequestMovieBody, IMovie } from "types/movie.body.types";
-import { CreateMoviesRepo, ReadMovies, ReadMovieByID, ReadMoviesByUser, UpdateMovie, DeleteMovie } from "repositories/movies.repository";
+import { CreateMoviesRepo, ReadMovies, ReadMovieByID, ReadMoviesByUser, ReadMovieByTitle, UpdateMovie, DeleteMovie } from "repositories/movies.repository";
 
-export const CreateMovieService = (body: IMovie) => {
+export const CreateMovieService = async (body: IMovie, id: string) => {
   try {
+    const existingMovie = await ReadMovieByTitle(body.title, id);
+    if (existingMovie) {
+      throw new Error("There is already a movie with this title");
+    }
     return CreateMoviesRepo(body);
   } catch (e) {
     throw new Error((e as Error).message);
@@ -41,13 +45,14 @@ export const UpdateMovieService = async (body: IRequestMovieBody, id: string) =>
     const origin = body.origin || movie?.origin;
     const description = body.description || movie?.description;
     const genre = body.genre || movie?.genre;
-    const duration = body.duration || movie?.duration;
-    const release_year = body.release_year || movie?.release_year;
-    const box_office = body.box_office || movie?.box_office;
+    const duration = body.duration || (movie?.duration as string);
+    const release_year = body.release_year || (movie?.release_year as string);
+    const box_office = body.box_office || (movie?.box_office as string);
     const cast = body.cast || movie?.cast;
     const studio = body.studio || movie?.studio;
     const available_on = body.available_on || movie?.available_on;
-    return UpdateMovie({ status, title, origin, description, genre, duration, release_year, box_office, cast, studio, available_on }, id);
+    const watched_on = body.watched_on || (movie?.watched_on as Date);
+    return UpdateMovie({ status, title, origin, description, genre, duration, release_year, box_office, cast, studio, available_on, watched_on }, id);
   } catch (e) {
     throw new Error((e as Error).message);
   }

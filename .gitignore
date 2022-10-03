@@ -1,3 +1,11 @@
 .env
 node_modules
 yarn-error.log
+
+# Lock files
+package-*.json
+*.lock
+
+# IDEs Folders
+.idea
+.vscode
