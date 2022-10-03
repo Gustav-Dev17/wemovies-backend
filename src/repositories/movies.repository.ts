@@ -25,6 +25,14 @@ export const ReadMovies = (pageNumber: number) => {
   }
 };
 
+export const ReadMovieByTitle = (title: string, userId: string) => {
+  try {
+    return prisma.movies.findFirst({ where: { title, userId } });
+  } catch (e) {
+    throw new Error((e as Error).message);
+  }
+};
+
 export const ReadMoviesByUser = (userId: string, pageNumber: number) => {
   if (pageNumber) {
     return prisma.movies.findMany({

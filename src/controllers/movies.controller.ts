@@ -6,7 +6,7 @@ export const CreateMovie = async (req: Request, res: Response) => {
   try {
     const { id } = req;
     req.body.userId = id;
-    const newMovie = await CreateMovieService(req.body);
+    const newMovie = await CreateMovieService(req.body, id);
     return res.status(201).json(newMovie);
   } catch (e) {
     return res.status(400).json({ message: "Error when creating movie!", descripton: (e as Error).message });

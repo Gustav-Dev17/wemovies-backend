@@ -1,8 +1,12 @@
 import { IRequestMovieBody, IMovie } from "types/movie.body.types";
-import { CreateMoviesRepo, ReadMovies, ReadMovieByID, ReadMoviesByUser, UpdateMovie, DeleteMovie } from "repositories/movies.repository";
+import { CreateMoviesRepo, ReadMovies, ReadMovieByID, ReadMoviesByUser, ReadMovieByTitle, UpdateMovie, DeleteMovie } from "repositories/movies.repository";
 
-export const CreateMovieService = (body: IMovie) => {
+export const CreateMovieService = async (body: IMovie, id: string) => {
   try {
+    const existingMovie = await ReadMovieByTitle(body.title, id);
+    if (existingMovie) {
+      throw new Error("There is already a movie with this title");
+    }
     return CreateMoviesRepo(body);
   } catch (e) {
     throw new Error((e as Error).message);
